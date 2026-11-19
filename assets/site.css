@@ -377,8 +377,8 @@ a { color: inherit; }
 }
 
 .links-page .avatar {
-  width: 96px;
-  height: 96px;
+width: clamp(128px, 34vw, 160px);
+height: clamp(128px, 34vw, 160px);
   border-radius: 50%;
   object-fit: cover;
   object-position: center 25%;
