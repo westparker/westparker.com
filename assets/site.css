@@ -605,7 +605,7 @@ height: clamp(128px, 34vw, 160px);
 
 .centered .channels { margin: 0 auto; }
 .centered .channels a { grid-template-columns: 1fr; gap: 0.2rem; }
-.foot { text-align: center; }
+.vt ~ .foot { text-align: center; }
 
 /* ---------- Veteran transition page ---------- */
 .vt .lede { margin-bottom: 1rem; }
