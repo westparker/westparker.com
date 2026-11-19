@@ -3,15 +3,16 @@
    One stylesheet for every page.
 
    Palette: a real night sky, not black.
-   Type: Cardo (a classical book serif) for headings,
-         Gillius (a humanist sans, Gill Sans lineage) for text.
+   Type: Space Grotesk for everything.
    ========================================================= */
 
-@font-face { font-family: "Cardo"; src: url("/assets/fonts/Cardo-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "Cardo"; src: url("/assets/fonts/Cardo-Italic.woff") format("woff"); font-weight: 400; font-style: italic; font-display: swap; }
-@font-face { font-family: "Gillius"; src: url("/assets/fonts/GilliusADF-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "Gillius"; src: url("/assets/fonts/GilliusADF-Italic.woff") format("woff"); font-weight: 400; font-style: italic; font-display: swap; }
-@font-face { font-family: "Gillius"; src: url("/assets/fonts/GilliusADF-Bold.woff") format("woff"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --night: #0a1024;      /* page background */
@@ -21,8 +22,8 @@
   --chart: #2a3458;      /* lines, borders */
   --polaris: #f2c879;    /* the one accent: hover, focus, active star */
 
-  --serif: "Cardo", "Iowan Old Style", Palatino, Georgia, serif;
-  --sans: "Gillius", "Gill Sans", "Gill Sans MT", "Seravek", Calibri, sans-serif;
+  --serif: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;   /* headings */
+  --sans: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;    /* body text */
 
   --measure: 36rem;      /* comfortable reading width */
 }
@@ -561,3 +562,98 @@ height: clamp(128px, 34vw, 160px);
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+
+/* ---------- Centered pages (About, Apps, Contact) ---------- */
+.page.centered {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.centered .page-title { max-width: none; }
+.centered .lede,
+.centered .prose { margin-left: auto; margin-right: auto; }
+.centered.about .portrait { margin: 0 auto 2.5rem; }
+
+.centered .apps { margin: 0 auto; }
+.centered .app {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+.centered .app p { grid-column: auto; margin-left: auto; margin-right: auto; }
+.centered .app-action { grid-column: auto; grid-row: auto; margin-top: 1.25rem; }
+
+.centered .channels { margin: 0 auto; }
+.centered .channels a { grid-template-columns: 1fr; gap: 0.2rem; }
+.foot { text-align: center; }
+
+/* ---------- Veteran transition page ---------- */
+.vt .lede { margin-bottom: 1rem; }
+
+.sec {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding-top: 3.5rem;
+}
+
+.group {
+  margin: 0 0 1.25rem;
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--polaris);
+}
+
+.sec-intro { margin: -0.5rem 0 1.5rem; color: var(--haze); }
+.sec-note { margin: 1.25rem 0 0; color: var(--haze); font-size: 0.95rem; }
+
+.res-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--chart);
+}
+
+.res {
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--chart);
+}
+
+.res-name {
+  display: inline-block;
+  font-size: 1.3rem;
+  line-height: 1.25;
+  color: var(--starlight);
+}
+
+a.res-name {
+  text-decoration: underline;
+  text-decoration-color: var(--chart);
+  text-underline-offset: 0.3em;
+  text-decoration-thickness: 1px;
+}
+
+a.res-name:hover { color: var(--polaris); text-decoration-color: var(--polaris); }
+
+.res-when {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--polaris);
+  font-size: 0.95rem;
+}
+
+.res p {
+  max-width: 32rem;
+  margin: 0.5rem auto 0;
+  color: var(--haze);
+}
+
+.closing { margin-top: 4rem; }
+
+/* ---------- Space Grotesk tuning ---------- */
+.intro h1, .page-title, .app h2, .readout h2, .links-page h1,
+.link-list .name, .channels .v, .group, .res-name {
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+.intro h1 { letter-spacing: -0.045em; }
+body { font-size: 1.0625rem; }
+.pending { font-style: normal; }
