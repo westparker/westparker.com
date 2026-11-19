@@ -452,6 +452,31 @@ height: clamp(128px, 34vw, 160px);
   letter-spacing: -0.02em;
 }
 
+.intro .creds {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.1rem;
+  margin: 1.4rem 0 0 0.2rem;
+  padding: 0;
+  list-style: none;
+  color: var(--haze);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  letter-spacing: 0.04em;
+}
+
+/* small gold star between the two credentials */
+.intro .creds li + li::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 1.1rem;
+  vertical-align: middle;
+  background: var(--polaris);
+  transform: rotate(45deg);
+}
+
 .intro p {
   margin: 1.25rem 0 0;
   max-width: 30rem;
