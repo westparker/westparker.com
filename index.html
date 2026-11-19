@@ -1,86 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>West Parker's Links</title>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
-  <link rel="stylesheet" href="/styles.css">
+  <title>West Parker</title>
+  <meta name="description" content="Former Green Beret and Chicago Booth MBA candidate who builds software. Every star on this page is a project.">
+  <meta property="og:title" content="West Parker">
+  <meta property="og:description" content="Former Green Beret and Chicago Booth MBA candidate who builds software. Every star on this page is a project.">
+  <meta name="theme-color" content="#0a1024">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a1024'/%3E%3Cpath d='M16 6v20M6 16h20' stroke='%23f2c879' stroke-width='1.2'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23ece6d6'/%3E%3C/svg%3E">
+  <link rel="preload" href="/assets/fonts/Cardo-Regular.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="/assets/fonts/GilliusADF-Regular.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css">
 </head>
 
-<body>
-  <main class="main-container">
+<body class="home-body">
+  <canvas id="sky" class="sky" aria-hidden="true"></canvas>
 
-    <div class="image-row">
-      <img src="/thumbnails/profile-pic.jpg" alt="West Parker headshot" class="avatar-image">
-    </div>
+  <header class="masthead">
+    <a class="wordmark" href="/">West Parker</a>
+    <nav class="nav" aria-label="Main">
+      <a href="/about/">About</a>
+      <a href="/apps/">Apps</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </header>
 
-    <h1 class="name-row">West Parker</h1>
+  <section class="intro">
+    <h1>West Parker</h1>
+    <p>Former Green Beret, Chicago Booth MBA candidate, and someone who builds things with code and AI. Each named star is a project. Hover or tap one to read about it.</p>
+  </section>
 
-    <p class="tagline">
-      Former Green Beret. MBA candidate at Chicago Booth.
-    </p>
+  <div id="readout" class="readout" role="dialog" aria-live="polite"></div>
 
-    <div class="social-icons-row">
-      <a href="https://github.com/westparker" target="_blank" aria-label="GitHub">
-        <i class="fa-brands fa-github"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/westleeparker/" target="_blank" aria-label="LinkedIn">
-        <i class="fa-brands fa-linkedin-in"></i>
-      </a>
-      <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-      <a href="https://www.INSERT-REAL-LINK" target="_blank" aria-label="Personal website">
-        <i class="fa-solid fa-globe"></i>
-      </a>
-    </div> <!-- social-icons-row -->
+  <!-- Same projects as plain links, for screen readers and anyone without JavaScript -->
+  <nav class="visually-hidden" aria-label="Projects">
+    <ul>
+      <li><a href="https://github.com/westparker/shopsense">ShopSense</a></li>
+      <li><a href="https://github.com/westparker/Amazon-Data-Final-Project">The last mile</a></li>
+      <li><a href="https://github.com/westparker/Semiconductors-News-Sentiment-">Chips and headlines</a></li>
+      <li><a href="https://github.com/westparker/dice-roll-2-rails">Dice Roll</a></li>
+      <li><a href="https://github.com/westparker/westparker.com">This site</a></li>
+    </ul>
+  </nav>
 
-    <div class="links-row">
-      <a class="item" target="_blank" href="https://github.com/westparker/link-in-bio">
-        <img class="thumbnail" src="/thumbnails/git.jpg" alt="">
-        <span class="link-text">
-          <span class="link-title">Latest GitHub project</span>
-          <span class="link-subtitle">link-in-bio</span>
-        </span>
-        <i class="fa-solid fa-chevron-right chevron"></i>
-      </a>
-
-      <a class="item" target="_blank" href="https://www.substack.com">
-        <img class="thumbnail" src="/thumbnails/substack.png" alt="">
-        <span class="link-text">
-          <span class="link-title">Latest blog post</span>
-          <span class="link-subtitle">Coming soon</span>
-        </span>
-        <i class="fa-solid fa-chevron-right chevron"></i>
-      </a>
-
-      <a class="item" target="_blank" href="https://www.amazon.com">
-        <img class="thumbnail" src="/thumbnails/amazon.jpg" alt="">
-        <span class="link-text">
-          <span class="link-title">Amazon shopping recs</span>
-          <span class="link-subtitle">Coming soon</span>
-        </span>
-        <i class="fa-solid fa-chevron-right chevron"></i>
-      </a>
-
-      <a class="item" target="_blank" href="https://www.americanexpress.com/">
-        <img class="thumbnail" src="/thumbnails/amex.jpg" alt="">
-        <span class="link-text">
-          <span class="link-title">Amex card referral</span>
-          <span class="link-subtitle">Coming soon</span>
-        </span>
-        <i class="fa-solid fa-chevron-right chevron"></i>
-      </a>
-    </div> <!-- links-row -->
-
-    <footer class="footer">
-      West Parker, 2026
-    </footer>
-
-  </main> <!-- main-container -->
+  <script src="/assets/projects.js"></script>
+  <script src="/assets/sky.js"></script>
 </body>
-
 </html>

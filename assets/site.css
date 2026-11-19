@@ -1,0 +1,563 @@
+/* =========================================================
+   westparker.com
+   One stylesheet for every page.
+
+   Palette: a real night sky, not black.
+   Type: Cardo (a classical book serif) for headings,
+         Gillius (a humanist sans, Gill Sans lineage) for text.
+   ========================================================= */
+
+@font-face { font-family: "Cardo"; src: url("/assets/fonts/Cardo-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Cardo"; src: url("/assets/fonts/Cardo-Italic.woff") format("woff"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Gillius"; src: url("/assets/fonts/GilliusADF-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Gillius"; src: url("/assets/fonts/GilliusADF-Italic.woff") format("woff"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Gillius"; src: url("/assets/fonts/GilliusADF-Bold.woff") format("woff"); font-weight: 700; font-style: normal; font-display: swap; }
+
+:root {
+  --night: #0a1024;      /* page background */
+  --deep: #070b19;       /* bottom of the sky */
+  --starlight: #ece6d6;  /* main text, warm white like real starlight */
+  --haze: #8d95ae;       /* secondary text */
+  --chart: #2a3458;      /* lines, borders */
+  --polaris: #f2c879;    /* the one accent: hover, focus, active star */
+
+  --serif: "Cardo", "Iowan Old Style", Palatino, Georgia, serif;
+  --sans: "Gillius", "Gill Sans", "Gill Sans MT", "Seravek", Calibri, sans-serif;
+
+  --measure: 36rem;      /* comfortable reading width */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; background: var(--deep); }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--night) 0, var(--deep) 100vh) no-repeat var(--deep);
+  color: var(--starlight);
+  font-family: var(--sans);
+  font-size: 1.125rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+::selection { background: var(--polaris); color: var(--deep); }
+
+:focus-visible {
+  outline: 1px solid var(--polaris);
+  outline-offset: 4px;
+}
+
+/* ---------- Site header (every page) ---------- */
+.masthead {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1.75rem clamp(1.25rem, 4vw, 3rem);
+}
+
+.wordmark {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.nav {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.nav a {
+  color: var(--haze);
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: var(--starlight);
+}
+
+.nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--polaris);
+  text-underline-offset: 0.4em;
+  text-decoration-thickness: 1px;
+}
+
+/* ---------- Inner pages ---------- */
+.page {
+  padding: clamp(3rem, 10vh, 7rem) clamp(1.25rem, 4vw, 3rem) 5rem;
+  max-width: 64rem;
+}
+
+.page-title {
+  margin: 0 0 1.5rem;
+  max-width: 14ch;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+}
+
+.lede {
+  max-width: var(--measure);
+  margin: 0 0 3rem;
+  color: var(--haze);
+  font-size: 1.25rem;
+}
+
+.prose {
+  max-width: var(--measure);
+}
+
+.prose p { margin: 0 0 1.1em; }
+
+.prose h2 {
+  margin: 2.5em 0 0.5em;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+.text-link {
+  color: var(--starlight);
+  text-decoration: underline;
+  text-decoration-color: var(--chart);
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 1px;
+}
+
+.text-link:hover { text-decoration-color: var(--polaris); }
+
+/* ---------- About ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, var(--measure));
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.portrait {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: grayscale(1) contrast(1.05);
+}
+
+.facts {
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--chart);
+}
+
+.facts li {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--chart);
+}
+
+.facts dt, .facts .k { color: var(--haze); }
+
+@media (max-width: 720px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .portrait { max-width: 14rem; }
+  .facts li { grid-template-columns: 1fr; gap: 0.1rem; }
+}
+
+/* ---------- Apps list ---------- */
+.apps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 48rem;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.25rem 2rem;
+  align-items: baseline;
+  padding: 2rem 0;
+  border-top: 1px solid var(--chart);
+}
+
+.app:last-child { border-bottom: 1px solid var(--chart); }
+
+.app h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.1;
+}
+
+.app p {
+  grid-column: 1;
+  margin: 0.4rem 0 0;
+  max-width: 34rem;
+  color: var(--haze);
+}
+
+.app .made {
+  font-size: 0.95rem;
+  color: var(--haze);
+  opacity: 0.8;
+}
+
+.app-action {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  align-self: center;
+  white-space: nowrap;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.7rem 1.3rem;
+  border: 1px solid var(--starlight);
+  color: var(--starlight);
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.button:hover {
+  background: var(--starlight);
+  color: var(--deep);
+}
+
+.pending {
+  font-size: 1rem;
+  color: var(--haze);
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .app { grid-template-columns: 1fr; }
+  .app-action { grid-column: 1; grid-row: auto; margin-top: 1rem; }
+}
+
+/* ---------- Contact ---------- */
+.channels {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 40rem;
+  border-top: 1px solid var(--chart);
+}
+
+.channels li { border-bottom: 1px solid var(--chart); }
+
+.channels a {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  text-decoration: none;
+}
+
+.channels .k { color: var(--haze); }
+
+.channels .v {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.channels a:hover .v { color: var(--polaris); }
+
+@media (max-width: 520px) {
+  .channels a { grid-template-columns: 1fr; gap: 0.1rem; }
+}
+
+/* ---------- Footer ---------- */
+.foot {
+  padding: 2rem clamp(1.25rem, 4vw, 3rem);
+  color: var(--haze);
+  font-size: 0.9rem;
+}
+
+/* ---------- Calorie calculator ---------- */
+.calc {
+  max-width: 34rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.field { display: grid; gap: 0.4rem; }
+
+.field label, .field legend {
+  color: var(--haze);
+  font-size: 1rem;
+  padding: 0;
+}
+
+.field fieldset { border: 0; margin: 0; padding: 0; }
+
+.row { display: flex; gap: 0.75rem; }
+
+.calc input[type="number"],
+.calc select {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  background: transparent;
+  border: 1px solid var(--chart);
+  border-radius: 0;
+  color: var(--starlight);
+  font: inherit;
+}
+
+.calc select option { background: var(--night); }
+
+.calc input:focus, .calc select:focus {
+  outline: none;
+  border-color: var(--polaris);
+}
+
+.toggle { display: flex; border: 1px solid var(--chart); width: fit-content; }
+.toggle input { position: absolute; opacity: 0; pointer-events: none; }
+.toggle label {
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+  color: var(--haze);
+}
+.toggle input:checked + label { background: var(--starlight); color: var(--deep); }
+.toggle input:focus-visible + label { outline: 1px solid var(--polaris); outline-offset: 2px; }
+
+.result {
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--chart);
+}
+
+.result .big {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 9vw, 4.5rem);
+  line-height: 1;
+}
+
+.result .unit { color: var(--haze); }
+
+.result table {
+  margin-top: 1.5rem;
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.result td { padding: 0.5rem 0; border-bottom: 1px solid var(--chart); }
+.result td:last-child { text-align: right; }
+
+.note { color: var(--haze); font-size: 0.95rem; }
+
+/* ---------- /links (the page your social bios point to) ---------- */
+.links-page {
+  max-width: 26rem;
+  margin: 0 auto;
+  padding: clamp(3rem, 10vh, 6rem) 1.25rem 3rem;
+  text-align: center;
+}
+
+.links-page .avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: grayscale(1);
+}
+
+.links-page h1 {
+  margin: 1.25rem 0 0.25rem;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 1.1;
+}
+
+.links-page .lede { margin: 0 auto 2.5rem; font-size: 1.1rem; }
+
+.link-list { list-style: none; margin: 0; padding: 0; text-align: left; }
+
+.link-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.1rem 0.25rem;
+  border-bottom: 1px solid var(--chart);
+  text-decoration: none;
+}
+
+.link-list li:first-child a { border-top: 1px solid var(--chart); }
+
+.link-list .name { font-family: var(--serif); font-size: 1.35rem; }
+.link-list .where { color: var(--haze); font-size: 0.95rem; }
+.link-list a:hover .name { color: var(--polaris); }
+
+.links-page .home { display: inline-block; margin-top: 2.5rem; color: var(--haze); font-size: 0.95rem; }
+
+/* ---------- Home: the star chart ---------- */
+.home-body { overflow: hidden; }
+
+.sky {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.home-body .masthead { position: fixed; top: 0; left: 0; right: 0; }
+
+/* Invisible buttons that sit on top of each named star.
+   The canvas draws the star; the button makes it hoverable, tappable and keyboard reachable. */
+.star-hit {
+  position: fixed;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.star-hit:focus-visible { outline: 1px solid var(--polaris); outline-offset: 0; }
+
+.star-label {
+  position: fixed;
+  z-index: 2;
+  transform: translate(14px, -50%);
+  color: var(--haze);
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: color 0.2s;
+}
+
+.star-label.on { opacity: 0; }
+
+.intro {
+  position: fixed;
+  z-index: 4;
+  left: clamp(1.25rem, 4vw, 3rem);
+  bottom: clamp(1.5rem, 6vh, 3.5rem);
+  max-width: 36rem;
+  pointer-events: none;
+}
+
+.intro h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(3.5rem, 11vw, 8.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+.intro p {
+  margin: 1.25rem 0 0;
+  max-width: 30rem;
+  color: var(--haze);
+  font-size: 1.15rem;
+}
+
+/* The panel that opens beside a star */
+.readout {
+  position: fixed;
+  z-index: 6;
+  width: min(22rem, calc(100vw - 2.5rem));
+  padding: 1.25rem 1.4rem 1.3rem;
+  background: rgba(7, 11, 25, 0.92);
+  border: 1px solid var(--chart);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 0.18s, transform 0.18s, visibility 0s 0.18s;
+}
+
+.readout.open {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.18s, transform 0.18s;
+}
+
+.readout h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.7rem;
+  line-height: 1.1;
+}
+
+.readout .meta { margin: 0.3rem 0 0.8rem; color: var(--haze); font-size: 0.95rem; }
+.readout .desc { margin: 0 0 1rem; font-size: 1.02rem; line-height: 1.5; }
+.readout .acts { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+.readout .acts a { font-size: 1rem; }
+
+.readout .close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.7rem;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: var(--haze);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: none;
+}
+
+/* Touch screens: no hover, so the panel docks to the bottom and gets a close button */
+@media (hover: none), (max-width: 640px) {
+  .readout {
+    left: 1.25rem !important;
+    right: 1.25rem;
+    top: auto !important;
+    bottom: 1.25rem;
+    width: auto;
+    background: var(--deep);
+  }
+  .readout .close { display: block; }
+  .star-label { font-size: 0.8rem; }
+}
+
+/* Screen readers and no-JS: the project list in plain HTML */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apps | West Parker</title>
+  <meta name="description" content="Small working apps West Parker built with AI. Open one and try it.">
+  <meta property="og:title" content="Apps | West Parker">
+  <meta property="og:description" content="Small working apps West Parker built with AI. Open one and try it.">
+  <meta name="theme-color" content="#0a1024">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a1024'/%3E%3Cpath d='M16 6v20M6 16h20' stroke='%23f2c879' stroke-width='1.2'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23ece6d6'/%3E%3C/svg%3E">
+  <link rel="preload" href="/assets/fonts/Cardo-Regular.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="/assets/fonts/GilliusADF-Regular.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+
+<body>
+  <header class="masthead">
+    <a class="wordmark" href="/">West Parker</a>
+    <nav class="nav" aria-label="Main">
+      <a href="/about/">About</a>
+      <a href="/apps/" aria-current="page">Apps</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <h1 class="page-title">Apps you can use</h1>
+    <p class="lede">Small, working tools I built quickly with AI coding assistants to test an idea. They're rough in places. Open one and try it.</p>
+
+    <!-- To add an app: copy an <li class="app"> block.
+         When an app goes live, replace <span class="pending">...</span> with
+         <a class="button" href="https://LIVE-URL">Open ...</a> -->
+    <ul class="apps">
+      <li class="app">
+        <h2>ShopSense</h2>
+        <p>Standing at the service counter with a repair quote? ShopSense checks what your car actually needs at its mileage and suggests shops worth trusting.</p>
+        <p class="made">Python and Claude</p>
+        <div class="app-action"><span class="pending">Live link coming</span></div>
+      </li>
+
+      <li class="app">
+        <h2>Recovery log</h2>
+        <p>For people coming back from an injury that needed surgery and physical therapy. Make an account and log the recovery from start to finish.</p>
+        <p class="made">Ruby on Rails</p>
+        <div class="app-action"><span class="pending">Live link coming</span></div>
+      </li>
+
+      <li class="app">
+        <h2>Daily calorie calculator</h2>
+        <p>Enter your age, height, weight and activity level to see roughly how many calories you burn in a day, plus targets for cutting or gaining.</p>
+        <p class="made">HTML and JavaScript</p>
+        <div class="app-action"><a class="button" href="/apps/calories/">Open the calculator</a></div>
+      </li>
+    </ul>
+  </main>
+  <footer class="foot">West Parker, <span class="yr">2026</span></footer>
+  <script>document.querySelector(".yr").textContent = new Date().getFullYear();</script>
+</body>
+</html>
