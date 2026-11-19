@@ -709,43 +709,4 @@ body { font-size: 1.0625rem; }
 .pending { font-style: normal; }
 .page-title + .channels { margin-top: 2.5rem; }
 
-/* Logos under the bio on the About page.
-   The images are the original files, untouched. Each sits on a white tile
-   because the Booth and Deloitte originals are made for a white background. */
-.marks {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 2.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--chart);
-}
 
-.mark {
-  position: relative;
-  display: block;
-  height: 0;
-  padding-bottom: 50%;   /* tile is always twice as wide as it is tall; works in every browser, including iPhone Safari */
-  overflow: hidden;
-  background: #fff;
-  border-radius: 10px;
-}
-
-/* Each logo is pinned inside the tile with a small margin, then scaled to fit */
-.mark img {
-  position: absolute;
-  top: 12%;
-  left: 6%;
-  width: 88%;
-  height: 76%;
-  object-fit: contain;
-}
-
-/* The Booth and Deloitte files have wide white margins built in.
-   Zoom them on the page (the files themselves are unchanged). */
-.mark .zoom-booth { transform: scale(1.35); }
-.mark .zoom-deloitte { transform: scale(2.1); }
-
-@media (max-width: 640px) {
-  .marks { gap: 0.6rem; }
-}

@@ -41,4 +41,3 @@ Deployed on Render as a static site. Every push to `main` goes live automaticall
 ## Credits
 
 - Font: [Space Grotesk](https://github.com/floriankarsten/space-grotesk), SIL Open Font License, hosted in `assets/fonts/`.
-- The Special Forces crest, Chicago Booth logo and Deloitte logo belong to their respective owners.
