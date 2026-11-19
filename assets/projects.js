@@ -28,7 +28,7 @@ window.PROJECTS = [
     code: "https://github.com/westparker/Amazon-Data-Final-Project",
     live: null,
     x: 0.45, y: 0.42, mx: 0.40, my: 0.36,
-    links: ["shopsense"]
+    links: ["shopsense", "macros"]
   },
   {
     id: "shopsense",
@@ -38,6 +38,15 @@ window.PROJECTS = [
     live: null,
     x: 0.62, y: 0.24, mx: 0.68, my: 0.24,
     links: ["dice", "achilles"]
+  },
+  {
+    id: "macros",
+    name: "Meal macros",
+    desc: "Snap a photo of your meal or describe it, and AI estimates the calories, protein, carbs and fat.",
+    code: "https://github.com/westparker/ai-chat-macros",
+    live: null,
+    x: 0.53, y: 0.64, mx: 0.22, my: 0.50,
+    links: []
   },
   {
     id: "dice",
