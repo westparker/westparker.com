@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>West Parker | Links</title>
-  <meta name="description" content="West Parker on LinkedIn and GitHub.">
-  <meta property="og:title" content="West Parker | Links">
-  <meta property="og:description" content="West Parker on LinkedIn and GitHub.">
+  <title>West Parker</title>
+  <meta name="description" content="Former Green Beret and Chicago Booth MBA candidate who builds software. Every star on this page is a project.">
+  <meta property="og:title" content="West Parker">
+  <meta property="og:description" content="Former Green Beret and Chicago Booth MBA candidate who builds software. Every star on this page is a project.">
   <meta name="theme-color" content="#0a1024">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a1024'/%3E%3Cpath d='M16 6v20M6 16h20' stroke='%23f2c879' stroke-width='1.2'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23ece6d6'/%3E%3C/svg%3E">
   <link rel="preload" href="/assets/fonts/Cardo-Regular.woff" as="font" type="font/woff" crossorigin>
@@ -14,19 +14,37 @@
   <link rel="stylesheet" href="/assets/site.css">
 </head>
 
-<body>
-  <main class="links-page">
-    <img class="avatar" src="/assets/img/west.jpg" alt="West Parker">
-    <h1 style="margin-bottom: 2.5rem">West Parker</h1>
+<body class="home-body">
+  <canvas id="sky" class="sky" aria-hidden="true"></canvas>
 
-    <ul class="link-list">
-      <li><a href="https://www.linkedin.com/in/westleeparker/" target="_blank" rel="noopener"><span class="name">LinkedIn</span><span class="where">in/westleeparker</span></a></li>
-      <li><a href="https://github.com/westparker" target="_blank" rel="noopener"><span class="name">GitHub</span><span class="where">westparker</span></a></li>
-      <!-- Update this one whenever you ship something new -->
-      <li><a href="https://github.com/westparker/shopsense" target="_blank" rel="noopener"><span class="name">Latest project</span><span class="where">ShopSense</span></a></li>
+  <header class="masthead">
+    <a class="wordmark" href="/">West Parker</a>
+    <nav class="nav" aria-label="Main">
+      <a href="/about/">About</a>
+      <a href="/apps/">Apps</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <h1>West Parker</h1>
+    <p>Former Green Beret, Chicago Booth MBA candidate, and someone who builds things with code and AI. Each named star is a project. Hover or tap one to read about it.</p>
+  </section>
+
+  <div id="readout" class="readout" role="dialog" aria-live="polite"></div>
+
+  <!-- Same projects as plain links, for screen readers and anyone without JavaScript -->
+  <nav class="visually-hidden" aria-label="Projects">
+    <ul>
+      <li><a href="https://github.com/westparker/shopsense">ShopSense</a></li>
+      <li><a href="https://github.com/westparker/Amazon-Data-Final-Project">The last mile</a></li>
+      <li><a href="https://github.com/westparker/Semiconductors-News-Sentiment-">Chips and headlines</a></li>
+      <li><a href="https://github.com/westparker/dice-roll-2-rails">Dice Roll</a></li>
+      <li><a href="https://github.com/westparker/westparker.com">This site</a></li>
     </ul>
+  </nav>
 
-    <a class="home text-link" href="/">westparker.com</a>
-  </main>
+  <script src="/assets/projects.js"></script>
+  <script src="/assets/sky.js"></script>
 </body>
 </html>
