@@ -102,8 +102,8 @@
         const q = projects.find((o) => o.id === id);
         if (!q) continue;
         const a = pos(p), b = pos(q);
-        const lit = active && (active === p || active === q);
-        ctx.strokeStyle = lit ? "rgba(242,200,121,0.55)" : "rgba(141,149,174,0.22)";
+        const g = Math.max(p.glow || 0, q.glow || 0);
+        ctx.strokeStyle = `rgba(${mix(141, 242, g)},${mix(149, 200, g)},${mix(174, 121, g)},${0.22 + 0.33 * g})`;
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(a.x + (b.x - a.x) * eased, a.y + (b.y - a.y) * eased);
@@ -114,22 +114,23 @@
 
   function drawStar(p, t) {
     const { x, y } = pos(p);
-    const on = active === p;
+    const g = p.glow || 0;
     const pulse = reduceMotion ? 1 : 1 + 0.08 * Math.sin(t * 0.002 + x);
-    const color = on ? "242,200,121" : "236,230,214";
+    const color = `${mix(STAR[0], GOLD[0], g)},${mix(STAR[1], GOLD[1], g)},${mix(STAR[2], GOLD[2], g)}`;
 
-    // soft glow
-    const g = ctx.createRadialGradient(x, y, 0, x, y, 18 * pulse);
-    g.addColorStop(0, `rgba(${color},0.55)`);
-    g.addColorStop(1, `rgba(${color},0)`);
-    ctx.fillStyle = g;
+    // soft glow, grows as the star lights up
+    const R = (18 + 14 * g) * pulse;
+    const halo = ctx.createRadialGradient(x, y, 0, x, y, R);
+    halo.addColorStop(0, `rgba(${color},${0.55 + 0.2 * g})`);
+    halo.addColorStop(1, `rgba(${color},0)`);
+    ctx.fillStyle = halo;
     ctx.beginPath();
-    ctx.arc(x, y, 18 * pulse, 0, Math.PI * 2);
+    ctx.arc(x, y, R, 0, Math.PI * 2);
     ctx.fill();
 
     // diffraction spikes, like a star in a telescope photo
-    const L = (on ? 16 : 10) * pulse;
-    ctx.strokeStyle = `rgba(${color},${on ? 0.8 : 0.45})`;
+    const L = (10 + 8 * g) * pulse;
+    ctx.strokeStyle = `rgba(${color},${0.45 + 0.4 * g})`;
     ctx.lineWidth = 0.75;
     ctx.beginPath();
     ctx.moveTo(x - L, y); ctx.lineTo(x + L, y);
@@ -139,21 +140,36 @@
     // core
     ctx.fillStyle = `rgb(${color})`;
     ctx.beginPath();
-    ctx.arc(x, y, on ? 3 : 2.2, 0, Math.PI * 2);
+    ctx.arc(x, y, 2.2 + 0.9 * g, 0, Math.PI * 2);
     ctx.fill();
 
-    // chart ring on the selected star
-    if (on) {
-      ctx.strokeStyle = "rgba(242,200,121,0.7)";
+    // chart ring fades and widens into place
+    if (g > 0.01) {
+      ctx.strokeStyle = `rgba(242,200,121,${0.7 * g})`;
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.arc(x, y, 22, 0, Math.PI * 2);
+      ctx.arc(x, y, 14 + 8 * g, 0, Math.PI * 2);
       ctx.stroke();
+    }
+  }
+
+  const mix = (a, b, g) => Math.round(a + (b - a) * g);
+  const STAR = [236, 230, 214];   // starlight
+  const GOLD = [242, 200, 121];   // polaris
+
+  // Each star has a glow level from 0 (resting) to 1 (selected).
+  // Every frame it eases a little toward its target, so the light fades in and out.
+  function updateGlow() {
+    for (const p of projects) {
+      const target = active === p ? 1 : 0;
+      if (p.glow === undefined) p.glow = 0;
+      p.glow = reduceMotion ? target : p.glow + (target - p.glow) * 0.07;
     }
   }
 
   function frame(t) {
     ctx.clearRect(0, 0, W, H);
+    updateGlow();
     drawDust(t);
     drawLines(t);
     for (const p of projects) drawStar(p, t);
