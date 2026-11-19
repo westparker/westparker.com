@@ -58,7 +58,7 @@ a { color: inherit; }
   position: relative;
   z-index: 5;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: baseline;
   gap: 1.5rem;
   padding: 1.75rem clamp(1.25rem, 4vw, 3rem);
@@ -142,43 +142,18 @@ a { color: inherit; }
 .text-link:hover { text-decoration-color: var(--polaris); }
 
 /* ---------- About ---------- */
-.about-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 15rem) minmax(0, var(--measure));
-  gap: clamp(2rem, 6vw, 5rem);
-  align-items: start;
-}
-
-.portrait {
-  width: 100%;
-  aspect-ratio: 4 / 5;
+.about .portrait {
+  display: block;
+  width: clamp(8rem, 22vw, 11rem);
+  aspect-ratio: 1;
+  margin-bottom: 2.5rem;
+  border-radius: 50%;
   object-fit: cover;
   object-position: center 25%;
   filter: grayscale(1) contrast(1.05);
 }
 
-.facts {
-  margin: 2.5rem 0 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--chart);
-}
-
-.facts li {
-  display: grid;
-  grid-template-columns: 9rem 1fr;
-  gap: 1rem;
-  padding: 0.85rem 0;
-  border-bottom: 1px solid var(--chart);
-}
-
-.facts dt, .facts .k { color: var(--haze); }
-
-@media (max-width: 720px) {
-  .about-grid { grid-template-columns: 1fr; }
-  .portrait { max-width: 14rem; }
-  .facts li { grid-template-columns: 1fr; gap: 0.1rem; }
-}
+.about .prose p { font-size: 1.25rem; }
 
 /* ---------- Apps list ---------- */
 .apps {
@@ -508,7 +483,7 @@ height: clamp(128px, 34vw, 160px);
 }
 
 .readout h2 {
-  margin: 0;
+  margin: 0 0 0.6rem;
   font-family: var(--serif);
   font-weight: 400;
   font-size: 1.7rem;

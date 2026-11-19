@@ -207,12 +207,12 @@
     const acts = [];
     if (p.live) acts.push(link(p.live, "Open the app"));
     if (p.code) acts.push(link(p.code, "See the code"));
-    if (!acts.length) acts.push(`<span class="pending">Code not public yet</span>`);
+    if (!acts.length) acts.push(`<span class="pending">${p.soon ? "Coming soon" : "Code not public yet"}</span>`);
 
     readout.innerHTML = `
       <button class="close" type="button" aria-label="Close">&times;</button>
       <h2>${p.name}</h2>
-      <p class="meta">${p.meta}</p>
+      ${p.meta ? `<p class="meta">${p.meta}</p>` : ""}
       <p class="desc">${p.desc}</p>
       <div class="acts">${acts.join("")}</div>`;
     readout.querySelector(".close").addEventListener("click", close);

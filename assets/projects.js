@@ -7,6 +7,7 @@
    mx, my = position on a phone
    code   = GitHub link (or null)
    live   = link to the running app (or null)
+   soon   = true shows "Coming soon" instead of links
    links  = which other stars this one connects to with a line
    ========================================================= */
 
@@ -14,7 +15,6 @@ window.PROJECTS = [
   {
     id: "chips",
     name: "Chips and headlines",
-    meta: "Python and SQL. With Joshua Howard and Connor Henkle.",
     desc: "Does news sentiment move NVIDIA, AMD, TSMC and Intel? Scored years of headlines and lined them up against share prices, 2019 to 2025.",
     code: "https://github.com/westparker/Semiconductors-News-Sentiment-",
     live: null,
@@ -24,7 +24,6 @@ window.PROJECTS = [
   {
     id: "lastmile",
     name: "The last mile",
-    meta: "Python and Tableau. Chicago Booth.",
     desc: "What actually decides how long a delivery takes? Cleaned 43,700 Amazon deliveries across India and built dashboards that test distance, traffic, weather and driver quality.",
     code: "https://github.com/westparker/Amazon-Data-Final-Project",
     live: null,
@@ -34,7 +33,6 @@ window.PROJECTS = [
   {
     id: "shopsense",
     name: "ShopSense",
-    meta: "Python and Claude. Built for Building an AI Company at Booth.",
     desc: "A second opinion at the auto shop counter. Checks what your car actually needs at its mileage against the manufacturer's schedule, then points you to shops worth trusting.",
     code: "https://github.com/westparker/shopsense",
     live: null,
@@ -44,7 +42,6 @@ window.PROJECTS = [
   {
     id: "dice",
     name: "Dice Roll",
-    meta: "Ruby on Rails.",
     desc: "A dice-rolling app built in Ruby on Rails, made to learn how routes, controllers and views fit together.",
     code: "https://github.com/westparker/dice-roll-2-rails",
     live: null,
@@ -53,21 +50,21 @@ window.PROJECTS = [
   },
   {
     id: "achilles",
-    name: "Achilles",
-    meta: "Ruby on Rails, in progress.",
-    desc: "A recovery log for people coming back from injuries that needed surgery and physical therapy. Make an account, track the long road back.",
+    name: "Recovery log",
+    desc: "For anyone bouncing back from a serious injury. Log the long road from surgery through physical therapy and see how far you've come.",
     code: null,
     live: null,
+    soon: true,
     x: 0.79, y: 0.40, mx: 0.80, my: 0.42,
     links: ["site"]
   },
   {
     id: "site",
-    name: "This sky",
-    meta: "HTML, CSS and canvas.",
-    desc: "The site you're on. No framework, no template. Every star is drawn by a few hundred lines of JavaScript.",
-    code: "https://github.com/westparker/westparker.com",
+    name: "Coming soon",
+    desc: "Something new is in the works. Check back.",
+    code: null,
     live: null,
+    soon: true,
     x: 0.72, y: 0.62, mx: 0.56, my: 0.56,
     links: []
   }
